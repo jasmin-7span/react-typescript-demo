@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
+import { useSelector } from "react-redux";
+import { User } from "./types";
 
 function App() {
-  const [first, setFirst] = useState<string>('typescript')
+  const [first, setFirst] = useState<string>("typescript");
+  const userList: User[] = useSelector((state: any) => state?.user?.userList);
+  console.log("userList", userList);
 
   return (
     <>
       <h1>Vite + React + {first}</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {userList?.map((item) => {
+        return <h5 key={item.id}>{item.name}</h5>;
+      })}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
