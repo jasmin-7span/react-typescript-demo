@@ -23,23 +23,23 @@ export default function home() {
 
   const handleEdit = (id: number, item: Product) => {
     console.log("id", id);
-    navigate(`/edit-product/${id}`, {state: {product: item}});
+    navigate(`/edit-product/${id}`, { state: { product: item } });
   };
 
   const addProduct = () => {
-    navigate('/create-product');
-  }
+    navigate("/create-product");
+  };
 
   return (
     <div className="container mx-auto px-10">
       <div className="flex justify-between mt-4">
-      <h3 className="mt-4 font-medium">Product List</h3>
-      <button
-            className="text-white bg-blue-500 px-2 py-1 rounded mt-4"
-            onClick={addProduct}
-          >
-            Add Product
-          </button>
+        <h3 className="mt-4 font-medium">Product List</h3>
+        <button
+          className="text-white bg-blue-500 px-2 py-1 rounded mt-4"
+          onClick={addProduct}
+        >
+          Add Product
+        </button>
       </div>
       <table className="mt-4 border table-fixed border-spacing-2 border-collapse border-slate-500 w-full">
         <thead>
@@ -59,9 +59,17 @@ export default function home() {
                 <td className="border border-slate-600">{item.brand}</td>
                 <td className="border border-slate-600">{item.category}</td>
                 <td className="border border-slate-600">{item.price}</td>
-                <td className="border border-slate-600 py-2 text-center flex items-center justify-center">
-                  <EditIcon onClick={() => handleEdit(index, item)} className="h-6 w-6 cursor-pointer" />
-                  <DeleteIcon className="h-6 w-6 cursor-pointer ml-2" onClick={() => removeProduct(index)} />
+                <td className="border border-slate-600 py-2 text-center">
+                  <div className="flex items-center justify-center">
+                    <EditIcon
+                      onClick={() => handleEdit(index, item)}
+                      className="h-6 w-6 cursor-pointer"
+                    />
+                    <DeleteIcon
+                      className="h-6 w-6 cursor-pointer ml-2"
+                      onClick={() => removeProduct(index)}
+                    />
+                  </div>
                 </td>
               </tr>
             );
