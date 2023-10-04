@@ -1,7 +1,7 @@
-export interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
+export interface Product {
+  id?: number;
+  product_name: string;
+  brand: string;
+  category: string;
+  price: string;
 }

@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userSlice from './user'
+import productSlice from './product'
 
 const store = configureStore({
   reducer: {
-    [userSlice.name]: userSlice.reducer,
+    [productSlice.name]: productSlice.reducer,
   },
 //   middleware: (getDefaultMiddleware) =>
 //     getDefaultMiddleware().concat(api.middleware)
