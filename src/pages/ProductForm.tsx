@@ -12,7 +12,6 @@ export default function ProductForm() {
   const params = useParams();
   const location = useLocation();
   const product = location?.state?.product;
-  console.log("params", params?.id);
 
   const {
     register,
@@ -49,7 +48,7 @@ export default function ProductForm() {
   return (
     <div className="container mx-auto px-10 md:w-6/12 w-full">
       <div className="p-6 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md mt-6">
-        <h2 className="font-normal">Product Form</h2>
+        <h1 className="font-normal text-lg">Product Form</h1>
         <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
           <h5>Product Name:</h5>
           <input
