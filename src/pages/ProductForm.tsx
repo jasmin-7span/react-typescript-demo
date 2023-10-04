@@ -32,9 +32,9 @@ export default function ProductForm() {
   };
   
   return (
-    <div className="container mx-auto px-10 md:w-4/12 w-full">
+    <div className="container mx-auto px-10 md:w-6/12 w-full">
       <div className="p-6 shadow-lg mt-6">
-        <h3 className="font-bold">ProductForm</h3>
+        <h2 className="font-normal">ProductForm</h2>
         <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
           <h5>Product Name:</h5>
           <input
