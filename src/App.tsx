@@ -1,22 +1,16 @@
-import React, { useState } from 'react'
-import './App.css'
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./router";
+import Header from "./components/layout/Header";
 
 function App() {
-  const [first, setFirst] = useState<string>('typescript')
-
   return (
     <>
-      <h1>Vite + React + {first}</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
