@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Product } from "../types";
 import { productActions } from "../store/product";
 import { useNavigate } from "react-router-dom";
+import { EditIcon } from "../components/icons/EditIcon";
+import { DeleteIcon } from "../components/icons/DeleteIcon";
 
 export default function home() {
   const dispatch = useDispatch();
@@ -19,9 +21,9 @@ export default function home() {
     );
   };
 
-  const handleEdit = (id: number) => {
+  const handleEdit = (id: number, item: Product) => {
     console.log("id", id);
-    navigate(`edit-product/${id}`);
+    navigate(`/edit-product/${id}`, {state: {product: item}});
   };
 
   const addProduct = () => {
@@ -30,8 +32,8 @@ export default function home() {
 
   return (
     <div className="container mx-auto px-10">
+      <div className="flex justify-between mt-4">
       <h3 className="mt-4 font-medium">Product List</h3>
-      <div className="flex justify-end">
       <button
             className="text-white bg-blue-500 px-2 py-1 rounded mt-4"
             onClick={addProduct}
@@ -57,19 +59,9 @@ export default function home() {
                 <td className="border border-slate-600">{item.brand}</td>
                 <td className="border border-slate-600">{item.category}</td>
                 <td className="border border-slate-600">{item.price}</td>
-                <td className="border border-slate-600 py-2 text-center">
-                  <button
-                    className="text-white bg-blue-500 px-2 py-1 rounded"
-                    onClick={() => handleEdit(index)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="text-white bg-red-500 px-2 py-1 rounded ml-2"
-                    onClick={() => removeProduct(index)}
-                  >
-                    Delete
-                  </button>
+                <td className="border border-slate-600 py-2 text-center flex items-center justify-center">
+                  <EditIcon onClick={() => handleEdit(index, item)} className="h-6 w-6 cursor-pointer" />
+                  <DeleteIcon className="h-6 w-6 cursor-pointer ml-2" onClick={() => removeProduct(index)} />
                 </td>
               </tr>
             );

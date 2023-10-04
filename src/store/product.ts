@@ -25,7 +25,7 @@ const initialProductState = {
       price: "280",
     },
   ] as Product[],
-  id: null
+  id: null,
 };
 
 const productSlice = createSlice({
@@ -34,15 +34,27 @@ const productSlice = createSlice({
   reducers: {
     addProduct: (state, action) => ({
       ...state,
-      productList: [...state.productList, action.payload.productList]
+      productList: [...state.productList, action.payload.productList],
     }),
     removeProduct: (state, action) => ({
       ...state,
-      productList: [...state.productList.filter((item, index) => index !== action.payload.id)]
+      productList: [
+        ...state.productList.filter(
+          (item, index) => index !== action.payload.id
+        ),
+      ],
     }),
     updateProduct: (state, action) => ({
       ...state,
-      productList: action.payload
+      productList: [
+        ...state.productList.map((item, index) => {
+          if (item.id === action.payload.productList.id) {
+            return action.payload.productList;
+          } else {
+            return item;
+          }
+        }),
+      ],
     }),
   },
 });

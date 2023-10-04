@@ -3,34 +3,49 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Product } from "../types";
 import { productActions } from "../store/product";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function ProductForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
+  const location = useLocation();
+  const product = location?.state?.product;
+  console.log("params", params?.id);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  }: any = useForm({
     defaultValues: {
-      product_name: "",
-      brand: "",
-      category: "",
-      price: "",
+      product_name: product?.product_name || "",
+      brand: product?.brand || "",
+      category: product?.category || "",
+      price: product?.price || "",
     },
   });
 
   const onSubmit = (data: Product) => {
-    // const id = Math.floor(Math.random() * 100);
-    dispatch(
-      productActions.addProduct({
-        productList: data,
-      })
-    );
+    const id = Math.floor(Math.random() * 100);
+    if (params?.id) {
+      console.log("data", { ...data, id: product?.id });
+      dispatch(
+        productActions.updateProduct({
+          productList: { ...data, id: product?.id },
+        })
+      );
+    } else {
+      dispatch(
+        productActions.addProduct({
+          productList: { ...data, id },
+        })
+      );
+    }
     navigate("/");
   };
-  
+
   return (
     <div className="container mx-auto px-10 md:w-6/12 w-full">
       <div className="p-6 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md mt-6">
@@ -90,7 +105,7 @@ export default function ProductForm() {
             className="text-white bg-blue-500 px-4 py-2 rounded mt-4"
             type="submit"
           >
-            Add Product
+            {params?.id ? "Update product" : "Add Product"}
           </button>
         </form>
       </div>
