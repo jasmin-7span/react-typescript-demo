@@ -31,9 +31,10 @@ export default function home() {
   };
 
   return (
-    <div className="container mx-auto px-10">
-      <div className="flex justify-between mt-4">
-        <h3 className="mt-4 font-medium">Product List</h3>
+    <div className="container mx-auto">
+      <div className="bg-white p-4 rounded-md mt-6 h-[560px] overflow-auto">
+      <div className="flex justify-between">
+        <h3 className="mt-4 font-medium text-lg">Product List</h3>
         <button
           className="text-white bg-blue-500 px-2 py-1 rounded mt-4"
           onClick={addProduct}
@@ -76,6 +77,7 @@ export default function home() {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

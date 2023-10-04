@@ -47,7 +47,7 @@ export default function ProductForm() {
 
   return (
     <div className="container mx-auto px-10 md:w-6/12 w-full">
-      <div className="p-6 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md mt-6">
+      <div className="p-6 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md mt-6">
         <h1 className="font-normal text-lg">Product Form</h1>
         <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
           <h5>Product Name:</h5>

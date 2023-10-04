@@ -11,7 +11,7 @@ function DefaultLayout() {
   return (
     <div className="flex">
       <Sidebar toggleSidebar={toggleSidebar} isOpenSidebar={isOpenSidebar} />
-      <main className="w-full p-6">
+      <main className="w-full p-6 bg-gray-100">
         <Header />
         <Outlet />
       </main>
