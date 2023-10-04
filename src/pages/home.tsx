@@ -41,25 +41,25 @@ export default function home() {
           Add Product
         </button>
       </div>
-      <table className="mt-4 border table-fixed border-spacing-2 border-collapse border-slate-500 w-full">
+      <table className="mt-4 divide-y divide-gray-200 table-fixed border-spacing-2 border-collapse border-slate-500 w-full">
         <thead>
           <tr>
-            <th className="border border-slate-600">Product Name</th>
-            <th className="border border-slate-600">Brand</th>
-            <th className="border border-slate-600">Category</th>
-            <th className="border border-slate-600">Price</th>
-            <th className="border border-slate-600">Action</th>
+            <th className="border-slate-600 text-left">Product Name</th>
+            <th className="border-slate-600 text-left">Brand</th>
+            <th className="border-slate-600 text-left">Category</th>
+            <th className="border-slate-600 text-left">Price</th>
+            <th className="border-slate-600">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-gray-200">
           {productList?.map((item, index) => {
             return (
-              <tr key={index}>
-                <td className="border border-slate-600">{item.product_name}</td>
-                <td className="border border-slate-600">{item.brand}</td>
-                <td className="border border-slate-600">{item.category}</td>
-                <td className="border border-slate-600">{item.price}</td>
-                <td className="border border-slate-600 py-2 text-center">
+              <tr key={index} className="hover:bg-gray-200">
+                <td className="border-slate-600">{item.product_name}</td>
+                <td className="border-slate-600">{item.brand}</td>
+                <td className="border-slate-600">{item.category}</td>
+                <td className="border-slate-600">{item.price}</td>
+                <td className="border-slate-600 py-2 text-center">
                   <div className="flex items-center justify-center">
                     <EditIcon
                       onClick={() => handleEdit(index, item)}
