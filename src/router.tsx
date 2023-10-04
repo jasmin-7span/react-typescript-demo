@@ -10,8 +10,9 @@ const router = () => {
       element: <DefaultLayout />,
       children: [
         { path: "", element: <Home /> },
-        { path: "product-form", element: <ProductForm /> },
-        { path: "edit/:id", element: <ProductForm /> },
+        { path: "product", element: <Home /> },
+        { path: "create-product", element: <ProductForm /> },
+        { path: "edit-product/:id", element: <ProductForm /> },
       ],
     },
   ];

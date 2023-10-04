@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { IcOutlineHome } from "../icons/HomeIcon";
 import { ProductIcon } from "../icons/ProductIcon";
 import { DashboardIcon } from "../icons/DashboardIcon";
 
-function Sidebar() {
+function Sidebar({
+  toggleSidebar,
+  isOpenSidebar,
+}: {
+  toggleSidebar: () => void;
+  isOpenSidebar: boolean;
+}) {
   return (
     <>
       <div className="h-screen w-64 shadow-md">
@@ -14,19 +19,6 @@ function Sidebar() {
           </h2>
         </div>
         <ul className="mt-4 px-2">
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                `text-lg flex items-center hover:bg-gray-200 pl-6 py-2 rounded-md hover:cursor-pointer ${
-                  isActive ? "bg-gray-200" : ""
-                }`
-              }
-              to="/"
-            >
-              <IcOutlineHome className="mr-2 h-6 w-6" />
-              Home
-            </NavLink>
-          </li>
           <li className="mt-2">
             <NavLink
               className={({ isActive }) =>
@@ -34,11 +26,17 @@ function Sidebar() {
                   isActive ? "bg-gray-200" : ""
                 }`
               }
-              to="/product-form"
+              to="/product"
             >
               <ProductIcon className="mr-2 h-6 w-6" /> Product
             </NavLink>
           </li>
+          {/* <li
+            className="absolute bottom-2 right-2 hover:bg-gray-200 rounded-md hover:cursor-pointer"
+            onClick={toggleSidebar}
+          >
+            <LessThanIcon className="h-8 w-8" />
+          </li> */}
         </ul>
       </div>
     </>

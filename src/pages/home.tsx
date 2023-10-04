@@ -21,12 +21,24 @@ export default function home() {
 
   const handleEdit = (id: number) => {
     console.log("id", id);
-    navigate(`edit/${id}`);
+    navigate(`edit-product/${id}`);
   };
+
+  const addProduct = () => {
+    navigate('/create-product');
+  }
 
   return (
     <div className="container mx-auto px-10">
       <h3 className="mt-4 font-medium">Product List</h3>
+      <div className="flex justify-end">
+      <button
+            className="text-white bg-blue-500 px-2 py-1 rounded mt-4"
+            onClick={addProduct}
+          >
+            Add Product
+          </button>
+      </div>
       <table className="mt-4 border table-fixed border-spacing-2 border-collapse border-slate-500 w-full">
         <thead>
           <tr>
@@ -47,13 +59,13 @@ export default function home() {
                 <td className="border border-slate-600">{item.price}</td>
                 <td className="border border-slate-600 py-2 text-center">
                   <button
-                    className="text-white bg-blue-500 px-4 py-2 rounded"
+                    className="text-white bg-blue-500 px-2 py-1 rounded"
                     onClick={() => handleEdit(index)}
                   >
                     Edit
                   </button>
                   <button
-                    className="text-white bg-red-500 px-4 py-2 rounded ml-2"
+                    className="text-white bg-red-500 px-2 py-1 rounded ml-2"
                     onClick={() => removeProduct(index)}
                   >
                     Delete
