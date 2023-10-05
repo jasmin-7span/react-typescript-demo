@@ -6,7 +6,7 @@ function Sidebar({ isOpenSidebar }: { isOpenSidebar: boolean }) {
   return (
     <>
       <div
-        className={`h-screen w-64 shadow-md ${
+        className={`h-screen shadow-md ${
           isOpenSidebar
             ? "w-64 ease-in duration-100"
             : "w-0 overflow-hidden ease-in duration-100"
